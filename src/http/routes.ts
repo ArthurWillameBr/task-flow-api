@@ -5,6 +5,7 @@ import { profile } from "./controller/user/profile";
 import { verifyJwt } from "./middleware/verify-jwt";
 import { createTask } from "./controller/task/create-task";
 import { getTasks } from "./controller/task/get-tasks";
+import { deleteTask } from "./controller/task/delete-task";
 
 const router: Router = Router();
 
@@ -15,5 +16,6 @@ router.post("/sessions", authenticate)
 router.get("/profile", verifyJwt, profile)
 router.post("/tasks", verifyJwt, createTask)
 router.get("/tasks", verifyJwt, getTasks)
+router.delete("/tasks/:taskId", verifyJwt, deleteTask)
 
 export default router
