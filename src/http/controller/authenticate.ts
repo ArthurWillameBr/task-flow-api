@@ -23,7 +23,7 @@ export async function authenticate(req: Request, res: Response) {
       password,
     });
 
-    const token = jwt.sign({ sub: user.id }, env.JWT_SECRET, {
+    const token = jwt.sign({ id: user.id }, env.JWT_SECRET, {
       expiresIn: "30d",
     });
 
