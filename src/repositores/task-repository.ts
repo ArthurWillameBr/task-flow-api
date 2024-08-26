@@ -5,4 +5,5 @@ export interface TaskRepository {
     findByUserId: (userId: string) => Promise<Task[]>;
     findById: (taskId: string) => Promise<Task | null>;
     delete: (taskId: string) => Promise<void>;
+    update: (taskId: string, data: Prisma.TaskUncheckedUpdateInput) => Promise<Task>;
 }
