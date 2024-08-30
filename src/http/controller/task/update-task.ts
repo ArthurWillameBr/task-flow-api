@@ -8,10 +8,11 @@ export async function updateTask(req: Request, res: Response) {
   const createTaskBodySchema = z.object({
     title: z.string(),
     description: z.string(),
-    completed: z.boolean(),
+    priority: z.enum(["LOW", "MEDIUM", "HIGH"]),
+    status: z.enum(["TODO", "DONE", "BACKLOG", "IN_PROGRESS", "CANCELLED"]),
   });
 
-  const { title, description, completed } = createTaskBodySchema.parse(
+  const { title, description, priority, status } = createTaskBodySchema.parse(
     req.body
   );
 
@@ -27,7 +28,8 @@ export async function updateTask(req: Request, res: Response) {
       taskId,
       title,
       description,
-      completed,
+      priority,
+      status,
     });
     return res.status(200).send({ task });
   } catch (error) {

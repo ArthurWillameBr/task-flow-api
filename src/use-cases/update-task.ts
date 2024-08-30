@@ -1,12 +1,13 @@
 import { TaskRepository } from "@/repositores/task-repository";
-import { Task } from "@prisma/client";
+import { Priority, Status, Task } from "@prisma/client";
 
 interface UpdateTaskUseCaseRequest {
     userId: string;
     taskId: string;
     title: string;
     description: string;
-    completed: boolean;
+    priority: Priority;
+    status:  Status
 }
 
 interface UpdateTaskUseCaseResponse {
@@ -15,7 +16,7 @@ interface UpdateTaskUseCaseResponse {
 
 export class UpdateTaskUseCase {
     constructor(private taskRepository: TaskRepository) {}
-    async execute({userId, taskId, title, description, completed}: UpdateTaskUseCaseRequest): Promise<UpdateTaskUseCaseResponse> {
+    async execute({userId, taskId, title, description, priority, status}: UpdateTaskUseCaseRequest): Promise<UpdateTaskUseCaseResponse> {
         const task = await this.taskRepository.findById(taskId);
 
         if (!task || task.user_id !== userId) {
@@ -25,7 +26,8 @@ export class UpdateTaskUseCase {
           const updatedTask = await this.taskRepository.update(taskId,{
             title,
             description,
-            completed
+            priority,
+            status
           })
 
           return {
