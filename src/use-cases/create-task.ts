@@ -1,11 +1,12 @@
 import { TaskRepository } from "@/repositores/task-repository";
-import { Task } from "@prisma/client";
+import { Priority, Status, Task } from "@prisma/client";
 
 interface CreateTaskUseCaseRequest {
   title: string;
   userId: string;
   description?: string | null;
-  completed: boolean;
+  priority: Priority;
+  status:  Status
 }
 
 interface CreateTaskUseCaseResponse {
@@ -17,7 +18,8 @@ export class CreateTaskUseCase {
 
   async execute({
     title,
-    completed,
+    priority,
+    status,
     description,
     userId
   }: CreateTaskUseCaseRequest): Promise<CreateTaskUseCaseResponse> {
@@ -26,7 +28,8 @@ export class CreateTaskUseCase {
         user_id: userId,
         title,
         description,
-        completed
+        priority,
+        status,
     })
     return {
         task
