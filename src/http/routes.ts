@@ -8,6 +8,7 @@ import { getTasks } from "./controller/task/get-tasks";
 import { deleteTask } from "./controller/task/delete-task";
 import { updateTask } from "./controller/task/update-task";
 import { updateTaskStatus } from "./controller/task/update-task-status";
+import { updateTaskPriority } from "./controller/task/update-task-priority";
 
 const router: Router = Router();
 
@@ -21,5 +22,6 @@ router.get("/tasks", verifyJwt, getTasks)
 router.delete("/tasks/:taskId", verifyJwt, deleteTask)
 router.put('/tasks/:taskId', verifyJwt, updateTask);
 router.patch('/tasks/:taskId/status', verifyJwt, updateTaskStatus);
+router.patch('/tasks/:taskId/priority', verifyJwt, updateTaskPriority);
 
 export default router
