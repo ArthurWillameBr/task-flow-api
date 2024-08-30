@@ -7,6 +7,7 @@ import { createTask } from "./controller/task/create-task";
 import { getTasks } from "./controller/task/get-tasks";
 import { deleteTask } from "./controller/task/delete-task";
 import { updateTask } from "./controller/task/update-task";
+import { updateTaskStatus } from "./controller/task/update-task-status";
 
 const router: Router = Router();
 
@@ -19,5 +20,6 @@ router.post("/tasks", verifyJwt, createTask)
 router.get("/tasks", verifyJwt, getTasks)
 router.delete("/tasks/:taskId", verifyJwt, deleteTask)
 router.put('/tasks/:taskId', verifyJwt, updateTask);
+router.patch('/tasks/:taskId/status', verifyJwt, updateTaskStatus);
 
 export default router
