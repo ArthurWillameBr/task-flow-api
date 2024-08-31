@@ -4,9 +4,7 @@ import cors from "cors"
 
 export const app = express()
 
-app.use(cors({
-    origin: ["https://task-flow-web-97vz.vercel.app/auth/sign-up"]
-}))
+app.use(cors())
 app.use(express.json());
 
 app.use("/api", router)
