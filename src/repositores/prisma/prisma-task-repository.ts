@@ -19,6 +19,16 @@ export class PrismaTaskRepository implements TaskRepository {
         return tasks
     }
 
+    async findByUserAndTaskId(userId: string, taskId: string) {
+        const task = await prisma.task.findFirst({
+            where: {
+                user_id: userId,
+                id: taskId
+            }
+        })
+        return task
+    }
+
     async findById(taskId: string) {
         const task = await prisma.task.findUnique({
             where: {

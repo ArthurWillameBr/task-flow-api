@@ -9,6 +9,7 @@ import { deleteTask } from "./controller/task/delete-task";
 import { updateTask } from "./controller/task/update-task";
 import { updateTaskStatus } from "./controller/task/update-task-status";
 import { updateTaskPriority } from "./controller/task/update-task-priority";
+import { getTaskById } from "./controller/task/get-task-by-id";
 
 const router: Router = Router();
 
@@ -19,6 +20,7 @@ router.post("/sessions", authenticate)
 router.get("/profile", verifyJwt, profile)
 router.post("/tasks", verifyJwt, createTask)
 router.get("/tasks", verifyJwt, getTasks)
+router.get("/tasks/:taskId", verifyJwt, getTaskById)
 router.delete("/tasks/:taskId", verifyJwt, deleteTask)
 router.put('/tasks/:taskId', verifyJwt, updateTask);
 router.patch('/tasks/:taskId/status', verifyJwt, updateTaskStatus);
