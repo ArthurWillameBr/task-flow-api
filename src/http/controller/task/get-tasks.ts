@@ -2,7 +2,7 @@
 import { PrismaTaskRepository } from "@/repositores/prisma/prisma-task-repository";
 import { GetTasksUseCase } from "@/use-cases/get-tasks";
 import { Request, Response } from "express";
-import { Status } from "@prisma/client";
+import { Priority, Status } from "@prisma/client";
 
 export async function getTasks(req: Request, res: Response) {
     try {
@@ -11,12 +11,17 @@ export async function getTasks(req: Request, res: Response) {
 
         const { userId } = req as any
         const { status } = req.query
+        const { priority } = req.query
 
-        const isValidStatus = Object.values(Status).includes(status as Status)
+        const parsedStatus = Array.isArray(status) ? status.filter((status) => Object.values(Status).includes(status as Status)) as Status[] : 
+        [status].filter((status) => Object.values(Status).includes(status as Status)) as Status[]
+
+        const isValidPriority = Object.values(Priority).includes(priority as Priority)
 
         const taskResponse = await getTaskUseCase.execute({
             userId,
-            status: isValidStatus ? status as Status : undefined
+            status: parsedStatus.length > 0 ? parsedStatus : undefined,
+            priority: isValidPriority ? priority as Priority : undefined
         })
 
        return res.status(200).send(taskResponse)

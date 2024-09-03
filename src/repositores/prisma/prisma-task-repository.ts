@@ -1,4 +1,4 @@
-import { Prisma, Status } from "@prisma/client";
+import { Priority, Prisma, Status } from "@prisma/client";
 import { TaskRepository } from "../task-repository";
 import { prisma } from "@/lib/prisma";
 
@@ -10,11 +10,12 @@ export class PrismaTaskRepository implements TaskRepository {
         return task
     }
 
-    async findByUserId(userId: string, status?: Status) {
+    async findByUserId(userId: string, status?: Status[], priority?: Priority) {
         const tasks = await prisma.task.findMany({
             where: {
                 user_id: userId,
-                ...(status && {status})
+                ...(status && status.length > 0  && {status: {in: status} }),
+                ...(priority && {priority})
             }
         })
         return tasks
