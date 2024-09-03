@@ -1,8 +1,9 @@
 import { TaskRepository } from "@/repositores/task-repository";
-import { Task } from "@prisma/client";
+import { Status, Task } from "@prisma/client";
 
 interface CreateTaskUseCaseRequest {
   userId: string;
+  status?: Status
 }
 
 interface CreateTaskUseCaseResponse {
@@ -11,8 +12,8 @@ interface CreateTaskUseCaseResponse {
 
 export class GetTasksUseCase {
   constructor(private taskRepository: TaskRepository) {}
-  async execute({userId}: CreateTaskUseCaseRequest): Promise<CreateTaskUseCaseResponse> {
-    const tasks = await this.taskRepository.findByUserId(userId);
+  async execute({userId, status}: CreateTaskUseCaseRequest): Promise<CreateTaskUseCaseResponse> {
+    const tasks = await this.taskRepository.findByUserId(userId, status);
     return {
       tasks
     }

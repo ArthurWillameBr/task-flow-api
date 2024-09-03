@@ -1,8 +1,8 @@
-import { Prisma, Task } from '@prisma/client';
+import { Prisma, Status, Task } from '@prisma/client';
 
 export interface TaskRepository {
     create: (data: Prisma.TaskUncheckedCreateInput) => Promise<Task>;
-    findByUserId: (userId: string) => Promise<Task[]>;
+    findByUserId: (userId: string, status?: Status) => Promise<Task[]>;
     findById: (taskId: string) => Promise<Task | null>;
     findByUserAndTaskId: (userId: string, taskId: string) => Promise<Task | null>;
     delete: (taskId: string) => Promise<void>;
