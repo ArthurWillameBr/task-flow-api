@@ -10,12 +10,12 @@ export class PrismaTaskRepository implements TaskRepository {
         return task
     }
 
-    async findByUserId(userId: string, status?: Status[], priority?: Priority) {
+    async findByUserId(userId: string, status?: Status[], priority?: Priority[]) {
         const tasks = await prisma.task.findMany({
             where: {
                 user_id: userId,
                 ...(status && status.length > 0  && {status: {in: status} }),
-                ...(priority && {priority})
+                ...(priority && priority.length > 0 && {priority: {in: priority} })
             }
         })
         return tasks

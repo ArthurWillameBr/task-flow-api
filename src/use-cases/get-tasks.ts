@@ -4,7 +4,7 @@ import { Priority, Status, Task } from "@prisma/client";
 interface CreateTaskUseCaseRequest {
   userId: string;
   status?: Status[]
-  priority?: Priority
+  priority?: Priority[]
 }
 
 interface CreateTaskUseCaseResponse {
