@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto 📃
 
-<p align="center">O Task Flow é uma API RESTful desenvolvida para gerenciamento de tarefas, oferecendo autenticação de usuários e controle de atividades. Através do Task Flow, os usuários podem criar, editar, atualizar e deletar suas tarefas, além de gerenciar prioridades e filtrar tarefas conforme sua necessidade.</p>
+<p align="center">O <strong>Task Flow</strong> é uma API RESTful desenvolvida para gerenciamento de tarefas, oferecendo autenticação de usuários e controle de atividades. Através do Task Flow, os usuários podem criar, editar, atualizar e deletar suas tarefas, além de gerenciar prioridades e filtrar tarefas conforme sua necessidade.</p>
 
 ## Padrões e Arquitetura Utilizada 🔨
 
@@ -15,12 +15,12 @@ Repositórios: A camada de repositório é responsável por interagir com o banc
 Controllers: Os controllers servem como intermediários entre as requisições HTTP e os casos de uso, cuidando da interface com o cliente (API RESTful) e chamando os casos de uso apropriados para atender as requisições.
 
 ## Tecnologias utilizadas 👩‍💻
-- [Node.js](https://nodejs.org/pt) Plataforma backend.
-- [Express](https://expressjs.com/pt-br/) Framework para construção de APIs REST.
-- [TypeScript](https://www.typescriptlang.org/) Tipagem estática para maior segurança no desenvolvimento.
-- [Prisma ORM](https://www.prisma.io/) Mapeamento objeto-relacional para manipulação de dados.
-- [MySQL](https://www.mysql.com/) Bancos de dados relacional
-- [JWT](https://jwt.io/) Autenticação baseada em tokens.
+- [Node.js](https://nodejs.org/pt) - Plataforma backend.
+- [Express](https://expressjs.com/pt-br/) - Framework para construção de APIs REST.
+- [TypeScript](https://www.typescriptlang.org/) - Tipagem estática para maior segurança no desenvolvimento.
+- [Prisma ORM](https://www.prisma.io/) - Mapeamento objeto-relacional para manipulação de dados.
+- [MySQL](https://www.mysql.com/) - Bancos de dados relacional
+- [JWT](https://jwt.io/) - Autenticação baseada em tokens.
 
 ## Pré-requisitos ⚠
 
