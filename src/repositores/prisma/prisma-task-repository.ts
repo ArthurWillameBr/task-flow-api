@@ -18,7 +18,7 @@ export class PrismaTaskRepository implements TaskRepository {
                 ...(priority && priority.length > 0 && { priority: { in: priority } }),
                 ...(title && {
                     title: {
-                        search: title
+                        contains: title
                     }
                 })
             }
