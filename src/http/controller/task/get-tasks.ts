@@ -12,6 +12,7 @@ export async function getTasks(req: Request, res: Response) {
         const { userId } = req as any
         const { status } = req.query
         const { priority } = req.query
+        const { title } = req.query
 
         const parsedStatus = Array.isArray(status) ? status.filter((status) => Object.values(Status).includes(status as Status)) as Status[] : 
         [status].filter((status) => Object.values(Status).includes(status as Status)) as Status[]
@@ -22,7 +23,8 @@ export async function getTasks(req: Request, res: Response) {
         const taskResponse = await getTaskUseCase.execute({
             userId,
             status: parsedStatus.length > 0 ? parsedStatus : undefined,
-            priority: parsedPriority.length > 0 ? parsedPriority : undefined
+            priority: parsedPriority.length > 0 ? parsedPriority : undefined,
+            title: title as string | undefined
         })
 
        return res.status(200).send(taskResponse)

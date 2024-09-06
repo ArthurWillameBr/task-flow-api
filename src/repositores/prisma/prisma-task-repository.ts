@@ -10,12 +10,17 @@ export class PrismaTaskRepository implements TaskRepository {
         return task
     }
 
-    async findByUserId(userId: string, status?: Status[], priority?: Priority[]) {
+    async findByUserId(userId: string, status?: Status[], priority?: Priority[], title?: string) {
         const tasks = await prisma.task.findMany({
             where: {
                 user_id: userId,
-                ...(status && status.length > 0  && {status: {in: status} }),
-                ...(priority && priority.length > 0 && {priority: {in: priority} })
+                ...(status && status.length > 0 && { status: { in: status } }),
+                ...(priority && priority.length > 0 && { priority: { in: priority } }),
+                ...(title && {
+                    title: {
+                        search: title
+                    }
+                })
             }
         })
         return tasks
@@ -34,7 +39,7 @@ export class PrismaTaskRepository implements TaskRepository {
     async findById(taskId: string) {
         const task = await prisma.task.findUnique({
             where: {
-                id: taskId
+                id: taskId,
             }
         })
         return task

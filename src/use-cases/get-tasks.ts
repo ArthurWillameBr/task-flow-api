@@ -5,6 +5,7 @@ interface CreateTaskUseCaseRequest {
   userId: string;
   status?: Status[]
   priority?: Priority[]
+  title?: string
 }
 
 interface CreateTaskUseCaseResponse {
@@ -13,8 +14,8 @@ interface CreateTaskUseCaseResponse {
 
 export class GetTasksUseCase {
   constructor(private taskRepository: TaskRepository) {}
-  async execute({userId, status, priority}: CreateTaskUseCaseRequest): Promise<CreateTaskUseCaseResponse> {
-    const tasks = await this.taskRepository.findByUserId(userId, status, priority);
+  async execute({userId, status, priority, title}: CreateTaskUseCaseRequest): Promise<CreateTaskUseCaseResponse> {
+    const tasks = await this.taskRepository.findByUserId(userId, status, priority, title);
     return {
       tasks
     }

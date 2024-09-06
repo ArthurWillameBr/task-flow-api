@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -38,6 +39,7 @@ model Task {
 
   @@index([status])
   @@index([priority])
+  @@fulltext([title])
   @@map("tasks")
 }
 
