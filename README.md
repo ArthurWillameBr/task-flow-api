@@ -74,7 +74,7 @@ $ npm run start:dev
 
 ## RNs (Regras de negocios)
 - [x] O usuário não deve poder se cadastrar com um e-mail duplicado;
-- [X] Os status possíveis para uma tarefa são: A fazer Feito, Em progresso, Backlog, Cancelado;
+- [X] Os status possíveis para uma tarefa são: A fazer, Feito, Em progresso, Backlog, Cancelado;
 - [X] As prioridades possíveis para uma tarefa são: Alta, Média, Baixa;
       
 ## RNFs (Requisitos não funcionais)
