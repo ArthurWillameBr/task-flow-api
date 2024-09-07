@@ -57,3 +57,27 @@ $ npm run start:dev
 
 # O servidor inciará na porta:3333 - acesse <http://localhost:3333>
 ```
+
+## Requisitos funcionais
+ - [X] O usuário deve poder se cadastrar;
+ - [X] O usuário deve poder se autenticar;
+ - [X] O usuário autenticado deve poder visualizar seu perfil;
+ - [X] O usuário autenticado deve poder fazer logout;
+ - [X] O usuário autenticado deve poder cadastrar uma tarefa com: título, descrição, status (A fazer, Feito, Em progresso, Backlog, Cancelado) e prioridade (Alta, Média, Baixa);
+ - [X] O usuário autenticado deve poder atualizar o status de uma tarefa específica;
+ - [X] O usuário autenticado deve poder atualizar a prioridade de uma tarefa específica;
+ - [X] O usuário autenticado deve poder editar uma tarefa específica;
+ - [X] O usuário autenticado deve poder excluir uma tarefa específica;
+ - [X] O usuário autenticado deve poder filtrar tarefas por título;
+ - [X] O usuário autenticado deve poder filtrar tarefas por status;
+ - [X] O usuário autenticado deve poder filtrar tarefas por prioridade;
+
+## Regras de negocios
+- [x] O usuário não deve poder se cadastrar com um e-mail duplicado;
+- [X] Os status possíveis para uma tarefa são: A fazer Feito, Em progresso, Backlog, Cancelado;
+- [X] As prioridades possíveis para uma tarefa são: Alta, Média, Baixa;
+      
+## Requisitos não funcionais
+- [x] A senha do usuário precisa estar criptografada;
+- [x] Os dados da aplicação precisam estar persistidos em um banco Mysql;
+- [X] O usuário deve ser identificado por um JWT (JSON Web Token);
