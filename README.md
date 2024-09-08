@@ -8,9 +8,9 @@
 
 O Task Flow segue uma arquitetura modular e organizada, dividida em casos de uso, repositórios e controllers, garantindo clareza e manutenção facilitada do código. A arquitetura foi projetada com foco em desacoplamento e flexibilidade, utilizando princípios do SOLID para melhorar a robustez do sistema.
 
-Casos de Uso: Os casos de uso representam a camada mais pura da aplicação, totalmente desacoplada e independente do framework utilizado. Isso garante que a lógica central do negócio possa ser testada e mantida sem dependências diretas de infraestruturas externas. O uso do princípio Single Responsibility (SRP) do SOLID assegura que cada classe possui uma única responsabilidade, tornando o código mais legível e fácil de manter.
+Use Case: Os casos de uso representam a camada mais pura da aplicação, totalmente desacoplada e independente do framework utilizado. Isso garante que a lógica central do negócio possa ser testada e mantida sem dependências diretas de infraestruturas externas. O uso do princípio Single Responsibility (SRP) do SOLID assegura que cada classe possui uma única responsabilidade, tornando o código mais legível e fácil de manter.
 
-Repositórios: A camada de repositório é responsável por interagir com o banco de dados, gerenciando o armazenamento e recuperação de dados. Essa camada também está desacoplada do resto da aplicação, utilizando o Repository Pattern, facilitando a troca ou atualização da infraestrutura de persistência sem afetar o restante do código.
+Repositores: A camada de repositório é responsável por interagir com o banco de dados, gerenciando o armazenamento e recuperação de dados. Essa camada também está desacoplada do resto da aplicação, utilizando o Repository Pattern, facilitando a troca ou atualização da infraestrutura de persistência sem afetar o restante do código.
 
 Controllers: Os controllers servem como intermediários entre as requisições HTTP e os casos de uso, cuidando da interface com o cliente (API RESTful) e chamando os casos de uso apropriados para atender as requisições.
 
